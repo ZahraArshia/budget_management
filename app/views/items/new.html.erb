@@ -1,0 +1,9 @@
+<div class="card">
+  <div>
+    <%= form_with model: @group_item, url: group_items_path do |f| %>
+        <%= f.text_field :name, placeholder: 'Name', class:''%>
+        <%= f.number_field :amount, placeholder: 'Amount', class: ''%>
+        <%= f.submit 'Add Transaction', class:'btn'%>
+    <% end %>
+  </div>
+</div>

@@ -3,41 +3,19 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    # @items = Item.all
     @group = Group.find(params[:group_id])
     @items = Item.where(group_id: @group.id)
     @total_amount = @items.sum(:amount)
   end
 
-  # GET /items/1
-  # def show
-  #   render json: @item
-  # end
-
   # POST /items
   def create
-    # @item = Item.new(item_params)
+    @items = current_user.item.new(item_params)
 
-    # if @item.save
-    #   render json: @item, status: :created, location: @item
-    # else
-    #   render json: @item.errors, status: :unprocessable_entity
-    # end
-    @items = current_user.items.new(item_params)
-
-    if @payments.save
+    if @items.save
       redirect_to group_items_path, notice: 'Payment was successfully added'
     else
       render :new, alert: 'Failed to add payment'
-    end
-  end
-
-  # PATCH/PUT /items/1
-  def update
-    if @item.update(item_params)
-      render json: @item
-    else
-      render json: @item.errors, status: :unprocessable_entity
     end
   end
 
@@ -60,6 +38,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :amount)
+      params.permit(:name, :amount, :group_id)
     end
 end

@@ -3,19 +3,8 @@ class GroupsController < ApplicationController
 
   # GET /groups
   def index
-    # @groups = Group.all
     @user = current_user
     @groups = current_user.group.includes(:item).order(id: :desc)
-  end
-
-  # GET /groups/1
-  # def show
-  #   render json: @group
-  # end
-
-  # POST /groups
-  def new
-    @group = Group.new
   end
 
   def create
@@ -39,16 +28,10 @@ class GroupsController < ApplicationController
     else
       render :edit, alert: 'Failed to update category'
     end
-    # if @group.update(group_params)
-    #   render json: @group
-    # else
-    #   render json: @group.errors, status: :unprocessable_entity
-    # end
   end
 
   # DELETE /groups/1
   def destroy
-    # @group.destroy
     @user = current_user
     @group = Group.find(params[:id])
 

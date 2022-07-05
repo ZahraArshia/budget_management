@@ -1,0 +1,40 @@
+<div>
+   <%= link_to 'Back', groups_path, class: "btn"  %>
+   <%= button_to "Delete", group_item_path(group_id: @group.id, id: @group), method: :delete, class: 'btn' %>
+</div>
+<div class="card">
+   <div class="card-body">
+      <% if @items.blank? %>
+         <p>You Do Have Payments At the Moment </p>
+      <% else %>
+         <div>
+            <%= image_tag "https://img.icons8.com/fluency/48/000000/diversity.png" %>
+            <h1><%= @group.name %></h1>
+         </div>
+         <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+         </div>
+         <hr />
+         <ul>
+            <% @items.each do |payment| %>
+               <li class="transition-record">
+                  <a><%= payment.name %></a>
+                  <a>$<%= payment.amount %></a>
+               </li>
+            <% end %>
+         </ul>
+         <hr />
+      <% end %>
+      <div>
+         <p>Total Amount</p>
+         <p>$<%= @total_amount %></p>
+      </div>
+   </div>
+</div>
+
+<div>
+  <button class="btn" type="button">
+    <%= link_to "Add Transaction", new_group_item_path %>
+  </button>
+</div>
