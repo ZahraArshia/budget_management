@@ -3,24 +3,32 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.all
-
-    # render json: @items
+    # @items = Item.all
+    @group = Group.find(params[:group_id])
+    @items = Item.where(group_id: @group.id)
+    @total_amount = @items.sum(:amount)
   end
 
   # GET /items/1
-  def show
-    render json: @item
-  end
+  # def show
+  #   render json: @item
+  # end
 
   # POST /items
   def create
-    @item = Item.new(item_params)
+    # @item = Item.new(item_params)
 
-    if @item.save
-      render json: @item, status: :created, location: @item
+    # if @item.save
+    #   render json: @item, status: :created, location: @item
+    # else
+    #   render json: @item.errors, status: :unprocessable_entity
+    # end
+    @items = current_user.items.new(item_params)
+
+    if @payments.save
+      redirect_to group_items_path, notice: 'Payment was successfully added'
     else
-      render json: @item.errors, status: :unprocessable_entity
+      render :new, alert: 'Failed to add payment'
     end
   end
 
@@ -35,7 +43,13 @@ class ItemsController < ApplicationController
 
   # DELETE /items/1
   def destroy
-    @item.destroy
+    @item = Item.find(params[:id])
+
+    if @item.destroy
+      redirect_to groups_path, notice: 'Payment was successfully deleted'
+    else
+      render :index, alert: 'Failed to delete payment'
+    end
   end
 
   private

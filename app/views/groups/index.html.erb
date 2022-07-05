@@ -1,1 +1,32 @@
-<h1>groups index</h1>
+<div class="card">
+    <div>
+    <p>categories</p>
+    </div>
+</div>
+<div>
+    <% @groups.each do |category| %>
+        <div>
+            <div>
+              <%= image_tag "https://img.icons8.com/fluency/48/000000/diversity.png", class: "catagory-photo" %>
+                    <div>
+                        <div>
+                            <div>
+                                <p><%= link_to category.name, group_items_path(group_id: category.id) %></p>
+                                <p><%= link_to '', group_items_path(group_id: category.id), class: '' %></p>
+                            </div>
+                            <p><%= l category.created_at.to_date, format: :long %></p>
+                        </div>
+                        <div class="delete-category">
+                            <p>$<%= Item.where(group_id: category.id).reduce(0) { |sum, t| sum + t.amount } %></p>
+                            <%= button_to 'Delete'.html_safe, group_path(id: category.id), method: :delete, class: 'btn' %>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    <% end %>
+</div>
+<div class="btn-field">
+  <button class="btn" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add a new category">
+    <%= link_to 'Add a new category', new_group_path %>
+  </button>
+</div>

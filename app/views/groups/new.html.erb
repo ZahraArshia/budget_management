@@ -1,0 +1,11 @@
+<div class="card">
+    <div>
+        <%= form_with model: @group, url: groups_path do |f| %>
+            <div>
+                <%= f.file_field :icon, placeholder: "Add Icon", class: "form-control", type:"file", id:"formFile" %>
+            </div>
+            <%= f.text_field :name, placeholder: "Name", class: "form-control"%>
+            <%= f.submit 'Save', class: 'btn'%>
+        <% end %>
+    </div>
+</div>
