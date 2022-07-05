@@ -1,6 +1,6 @@
 class Group < ApplicationRecord
   belongs_to :user
-  has_many :item
+  has_many :item, dependent: :delete_all
 
   validates :name, presence: true, length: { maximum: 100 }
   validates :icon, presence: true

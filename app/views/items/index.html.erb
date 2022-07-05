@@ -21,6 +21,7 @@
                <li class="transition-record">
                   <a><%= payment.name %></a>
                   <a>$<%= payment.amount %></a>
+                  <%= button_to "Delete", group_item_path(user_id: payment.user.id, group_id: payment.group.id, id: payment.id), method: :delete, class: "btn"  %>
                </li>
             <% end %>
          </ul>

@@ -24,7 +24,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
 
     if @item.destroy
-      redirect_to groups_path, notice: 'Payment was successfully deleted'
+      redirect_to group_items_path, notice: 'Payment was successfully deleted'
     else
       render :index, alert: 'Failed to delete payment'
     end
