@@ -1,41 +1,47 @@
-<div>
-   <%= link_to 'Back', groups_path, class: "btn"  %>
-   <%= button_to "Delete", group_item_path(group_id: @group.id, id: @group), method: :delete, class: 'btn' %>
+<nav>
+  <div>
+    <%= link_to image_tag("https://img.icons8.com/ios-filled/48/ffffff/long-arrow-left.png"), groups_path, class: "btn"  %>
+  </div>
+  <h1>TRANSACTIONS</h1>
+  <img src="https://img.icons8.com/sf-black/48/ffffff/search.png"/>
+</nav>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class="banner">
+  <div class="cat-image">
+    <%= image_tag @group.icon rescue image_tag 'https://img.icons8.com/fluency/48/000000/diversity.png'%>
+  </div>
+  <h1><%= @group.name %></h1>
+  <div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+  <div>
+    <%= button_to "Delete Category", group_item_path(group_id: @group.id, id: @group), method: :delete, class: 'del-btn' %>
+  </div>
 </div>
-<div class="card">
-   <div class="card-body">
+<main>
+   <div>
       <% if @items.blank? %>
-         <p>You Do Have Payments At the Moment </p>
+         <p>No Transaction Yet!</p>
       <% else %>
-         <div>
-            <%= image_tag "https://img.icons8.com/fluency/48/000000/diversity.png" %>
-            <h1><%= @group.name %></h1>
-         </div>
-         <div>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-         </div>
-         <hr />
-         <ul>
+         <ul class="card-list">
             <% @items.each do |payment| %>
-               <li class="transition-record">
-                  <a><%= payment.name %></a>
+               <li class="transaction-card hover">
+                  <a><h2><%= payment.name %></h2></a>
                   <a>$<%= payment.amount %></a>
-                  <%= button_to "Delete", group_item_path(user_id: payment.user.id, group_id: payment.group.id, id: payment.id), method: :delete, class: "btn"  %>
+                  <%= button_to "Delete", group_item_path(user_id: payment.user.id, group_id: payment.group.id, id: payment.id), method: :delete, class: "del-btn"  %>
                </li>
             <% end %>
          </ul>
-         <hr />
       <% end %>
-      <div>
-         <p>Total Amount</p>
+      <div class="total-banner">
+         <h4>Total Amount</h4>
          <p>$<%= @total_amount %></p>
       </div>
    </div>
-</div>
-
-<div>
-  <button class="btn" type="button">
+   <button class="green-btn" type="button">
     <%= link_to "Add Transaction", new_group_item_path %>
   </button>
-</div>
+</main>

@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[ show update destroy ]
+  before_action :set_group, only: %i[show update destroy]
 
   # GET /groups
   def index
@@ -24,7 +24,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
-      redirect_to groups_path, notice: 'Category was successfully updated'
+      redirect_to groups_path, notice: 'Category updated successfully'
     else
       render :edit, alert: 'Failed to update category'
     end
@@ -36,21 +36,22 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
 
     if @group.destroy
-      redirect_to groups_path, notice: 'Category was successfully deleted'
+      redirect_to groups_path, notice: 'Category removed successfully'
     else
-      render :index, alert: 'Failed to delete category'
+      render :index, alert: 'Failed to remove category'
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def group_params
-      # params.require(:group).permit(:name, :icon)
-      params.permit(:name, :icon)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def group_params
+    # params.require(:group).permit(:name, :icon)
+    params.permit(:name, :icon)
+  end
 end
