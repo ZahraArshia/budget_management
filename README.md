@@ -5,7 +5,7 @@
 ![image](https://user-images.githubusercontent.com/78906545/177788777-5c6b6491-a506-4f5c-a4cc-f3b95cddcd37.png)
 ![image](https://user-images.githubusercontent.com/78906545/177788692-952e264b-bc37-43f0-9a49-2776139d9dd5.png)
 
-> [Visit website](https://budget-app-zm.herokuapp.com/)
+> [Visit website](https://thawing-taiga-04921.herokuapp.com/)
 
 > [Watch video]()
 
