@@ -4,7 +4,7 @@ RSpec.describe 'Item', type: :request do
   before(:example) do
     @user = User.create(name: 'Test', email: 'test@gmail.com', password: '123456')
     @group = Group.create(icon: 'icon.png', name: 'category1', user_id: @user.id)
-    @item = Item.create(name: 'item1', amount: '100', group_id:@group.id, user_id:@user.id)
+    @item = Item.create(name: 'item1', amount: '100', group_id: @group.id, user_id: @user.id)
   end
 
   describe 'GET /items' do

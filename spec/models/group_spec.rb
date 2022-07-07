@@ -6,7 +6,6 @@ RSpec.describe Group, type: :model do
     @group = Group.create(icon: 'icon.png', name: 'category1', user_id: @user.id)
   end
 
-
   describe 'Group validations' do
     it 'is valid with valid attributes' do
       expect(@group).to be_valid
