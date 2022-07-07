@@ -7,7 +7,7 @@
 
 > [Visit website](https://thawing-taiga-04921.herokuapp.com/)
 
-> [Watch video]()
+> [Watch video](https://www.loom.com/share/6b59cfa6cf814b4b949fe23785d47dd4)
 
 ## Built With
 
