@@ -1,0 +1,29 @@
+<nav>
+  <img src="https://img.icons8.com/material-outlined/48/ffffff/menu--v1.png"/>
+  <h1>BMA</h1>
+  <img src="https://img.icons8.com/sf-black/48/ffffff/search.png"/>
+</nav>
+<main>
+  <div class="center">
+    <h1 class="app-name">My Budget Manager</h1>
+    <br/>
+    <br/>
+    <% if user_signed_in? %>
+        <h4> Successfully signed in, welcom!</h4>
+        <br/>
+        <button class="blue-btn">
+          <%= link_to('Go to My Categories', "/groups") %>
+        </button>
+        <br/>
+        <br/>
+        <%= button_to "Sign out", destroy_user_session_path, :method => :delete, class:"del-btn" %>
+      <%else%>
+        <button class="green-btn">
+          <%= link_to('Sign in', "/users/sign_in") %>
+        </button>
+        <button class="blue-btn">
+          <%= link_to('Sign up', "/users/sign_up") %>
+        </button>
+    <% end %>
+  </div>
+</main>

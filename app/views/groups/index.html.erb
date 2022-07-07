@@ -1,0 +1,35 @@
+<nav>
+  <%= link_to image_tag("https://img.icons8.com/sf-regular/48/ffffff/exit.png"), destroy_user_session_path, :method => :delete %>
+  <h1>CATEGORIES</h1>
+  <img src="https://img.icons8.com/sf-black/48/ffffff/search.png"/>
+</nav>
+<main>
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <div class="card-list">
+    <% @groups.each do |category| %>
+        <div class="card hover">
+          <div class="flex-row">
+              <div class="cat-image">
+                <%= image_tag category.icon rescue image_tag 'https://img.icons8.com/fluency/48/000000/diversity.png'%>
+              </div>
+              <div>
+                <h2><%= link_to category.name, group_items_path(group_id: category.id, class: 'text') %></h2>
+                <br/>
+                <hr />
+                <br/>
+                <p><%= l category.created_at.to_date, format: :long %></p>
+              </div>
+            </div>
+            <div class="cat-total">
+              <p>$<%= Item.where(group_id: category.id).reduce(0) { |sum, t| sum + t.amount } %></p>
+              <br/>
+              <%= button_to 'Delete'.html_safe, group_path(id: category.id), method: :delete, class: 'del-btn' %>
+            </div>
+        </div>
+    <% end %>
+  </div>
+  <button class="green-btn" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add a new category">
+    <%= link_to 'Add a new category', new_group_path %>
+  </button>
+</main>

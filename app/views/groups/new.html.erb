@@ -1,0 +1,22 @@
+<nav>
+  <div>
+    <%= link_to image_tag("https://img.icons8.com/ios-filled/48/ffffff/long-arrow-left.png"), groups_path, class: "btn"  %>
+  </div>
+  <h1>NEW CATEGORY</h1>
+  <img src="https://img.icons8.com/sf-black/48/ffffff/search.png"/>
+</nav>
+<div class="center">
+<h1>ADD A NEW CATEGORY</h1>
+  <div class="card-list">
+    <%= form_with model: @group, url: groups_path do |f| %>   
+      <br/>
+      <%= f.text_field :icon, placeholder: "Enter the Icon link. e.g: https://icon.com", class: "form-field" %>
+      <br/>
+      <br/>
+      <%= f.text_field :name, placeholder: "Name", class: "form-field"%>
+      <br/>
+      <br/>
+      <%= f.submit 'Save', class: 'green-btn'%>
+    <% end %>
+  </div>
+</div>
