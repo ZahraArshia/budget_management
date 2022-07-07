@@ -2,7 +2,6 @@
 
 > BMA is a responsive mobile web application useful for your dailty budget managment. using this app you can have a list of transactions associated with a category suitable for record and manage expenditures.
 
-![image](https://user-images.githubusercontent.com/78906545/177789050-7cf31488-c0d2-4dcc-8153-103ed6acce0c.png)
 ![image](https://user-images.githubusercontent.com/78906545/177788777-5c6b6491-a506-4f5c-a4cc-f3b95cddcd37.png)
 ![image](https://user-images.githubusercontent.com/78906545/177788692-952e264b-bc37-43f0-9a49-2776139d9dd5.png)
 
